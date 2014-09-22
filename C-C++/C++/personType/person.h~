@@ -1,0 +1,26 @@
+//Person Type class implementation
+
+class personType
+{
+
+
+	string firstName;
+	string lastName;
+	int age;
+	char gender;
+
+	public:
+
+	  void setFirstName(string);
+	  string getFirstName() { return firstName;};
+	  void setLastName(string);
+	  string getLastName() { return lastName;};
+	  void setAge(int);
+	  int getAge() { return age; };
+	  void setGender(char);
+	  char getGender(){ return gender; };
+	  void setName(string,string);
+	  void printPersonData();
+
+};
+
