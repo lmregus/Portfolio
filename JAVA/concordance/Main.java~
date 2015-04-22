@@ -1,0 +1,27 @@
+
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Word mywords = new Word();
+		
+		//System.out.println("Word: " + mywords.GetWord());
+		
+		
+			//Concordance hola = new Concordance();
+			
+
+		
+		//System.out.println(mywords.getWord());
+		//System.out.println(mywords.getLine());
+		
+		Concordance myConcordance = new Concordance();
+		
+		myConcordance.getConcordance();
+	} 
+
+}
