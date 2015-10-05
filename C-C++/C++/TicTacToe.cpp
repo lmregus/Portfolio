@@ -55,12 +55,7 @@
 
     Sorry this game can be played by one or two players only.
 	
-
-
-
-**/ ------------------------------
-//  report your expected/tested results
-/============================================================================
+**/
 
 #include <iostream>
 #include <string>
