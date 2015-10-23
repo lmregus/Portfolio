@@ -44,7 +44,7 @@ def get_time(query_t):
             time_dict['h_m_s'].append(query_t[h_pos:h_pos+1:])
             time_dict['nums'].append(query_t[h_pos+1:s_pos])
             time_dict['h_m_s'].append(query_t[s_pos:s_pos+1])
-        elif h_pos >= 0 or m_pos >=0 or s_pos >= 0:
+        else:
             time_dict['nums'].append(query_t[:h_pos])
             time_dict['h_m_s'].append(query_t[h_pos:])
         return time_dict
