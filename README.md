@@ -1,2 +1,2 @@
 # Portfolio
-Some little projects from School
+School Projects
