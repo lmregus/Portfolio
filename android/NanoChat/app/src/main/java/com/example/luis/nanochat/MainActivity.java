@@ -50,7 +50,11 @@ public class MainActivity extends ListActivity {
         });
         **/
         Firebase.setAndroidContext(this); //Allows the Firebase client to keep its context
+<<<<<<< HEAD
         mFirebaseRef = new Firebase("your fire base url"); //Firebase instance(initializes connection to remote db)
+=======
+        mFirebaseRef = new Firebase("https://nanochatlmr.firebaseio.com/"); //Firebase instance(initializes connection to remote db)
+>>>>>>> b143824d4ab1ea16e0057f72c77972e83b68866c
 
         final EditText textEdit = (EditText) this.findViewById(R.id.text_edit);
         Button sendButton = (Button) this.findViewById(R.id.send_button);
