@@ -1,8 +1,8 @@
 # Developer
-    * **Firebase**
+   * **Firebase**
 
 # Description
-    * **This is the Firebase chat application(https://github.com/firebase/FirebaseUI-Android/tree/master/codelabs/chat) plus some minimal updates added by me, more updates to come in the future.**
+   * **This is the Firebase chat application(https://github.com/firebase/FirebaseUI-Android/tree/master/codelabs/chat) plus some minimal updates added by me, more updates to come in the future.**
 
 # Updates
     1.  Log out button
