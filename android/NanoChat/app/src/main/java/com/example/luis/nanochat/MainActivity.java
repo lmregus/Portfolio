@@ -30,7 +30,7 @@ public class MainActivity extends ListActivity {
     private Firebase mFirebaseRef;
     FirebaseListAdapter<ChatMessage> mListAdapter;
     String mUsername;
-    String email;
+    String mEmail;
     ChatMessage data = new ChatMessage();
 
     @Override
@@ -50,7 +50,7 @@ public class MainActivity extends ListActivity {
         });
         **/
         Firebase.setAndroidContext(this); //Allows the Firebase client to keep its context
-        mFirebaseRef = new Firebase("your fire base url"); //Firebase instance(initializes connection to remote db
+        mFirebaseRef = new Firebase("https://nanochatlmr.firebaseio.com/"); //Firebase instance(initializes connection to remote db)
 
         final EditText textEdit = (EditText) this.findViewById(R.id.text_edit);
         Button sendButton = (Button) this.findViewById(R.id.send_button);
@@ -58,15 +58,16 @@ public class MainActivity extends ListActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mUsername != null) {
+                if(mFirebaseRef.getAuth() != null) {
+                    //mUsername = (String) mFirebaseRef.getAuth().getProviderData().get("userName");
                     String text = textEdit.getText().toString();
-                    data = new ChatMessage(MainActivity.this.email, text, MainActivity.this.mUsername);
+                    data = new ChatMessage(data.getName(), text, data.getUserName());
                     mFirebaseRef.push().setValue(data);
                     textEdit.setText("");
-                } else {
+                }else {
                     new AlertDialog.Builder(MainActivity.this)
-                            .setTitle("Ooops!")
-                            .setMessage("You must log in, before sending a message")
+                            .setTitle("Oooops")
+                            .setMessage("You must log in first")
                             .create()
                             .show();
                 }
@@ -80,6 +81,8 @@ public class MainActivity extends ListActivity {
             protected void populateView(View v, ChatMessage model) {
                 ((TextView)v.findViewById(android.R.id.text1)).setText(model.getUserName());
                 ((TextView)v.findViewById(android.R.id.text2)).setText(model.getText());
+                data.setUserName(model.getUserName());
+                data.setEmail(model.getName());
             }
         };
         setListAdapter(mListAdapter);
@@ -102,6 +105,8 @@ public class MainActivity extends ListActivity {
                                 final String userName = ((TextView) dlg.findViewById(R.id.userName)).getText().toString();
                                 data.setUserName(userName);
                                 data.setEmail(email);
+                                mUsername = data.getUserName();
+                                mEmail = data.getName();
 
                                 //firebase auth
                                 mFirebaseRef.createUser(email, password, new Firebase.ResultHandler() {
@@ -156,10 +161,8 @@ public class MainActivity extends ListActivity {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 AlertDialog dlg = (AlertDialog) dialog;
                                                 final String email = ((TextView) dlg.findViewById(R.id.emailReset)).getText().toString();
-                                                final String newPassword = ((TextView) dlg.findViewById(R.id.passwordReset)).getText().toString();
-                                                final String oldPassword = ((TextView) dlg.findViewById(R.id.oldPassword)).getText().toString();
 
-                                                mFirebaseRef.changePassword(email, oldPassword, newPassword, new Firebase.ResultHandler() {
+                                                mFirebaseRef.resetPassword(email, new Firebase.ResultHandler() {
                                                     @Override
                                                     public void onSuccess() {
                                                         new AlertDialog.Builder(MainActivity.this)
@@ -170,7 +173,7 @@ public class MainActivity extends ListActivity {
                                                     }
 
                                                     @Override
-                                                    public void onError(FirebaseError error) {
+                                                    public void onError(FirebaseError firebaseError) {
                                                         new AlertDialog.Builder(MainActivity.this)
                                                                 .setMessage("There was an error, try again please")
                                                                 .setTitle("Password Reset")
@@ -189,6 +192,8 @@ public class MainActivity extends ListActivity {
                                 AlertDialog dlg = (AlertDialog) dialog;
                                 final String email = ((TextView) dlg.findViewById(R.id.email)).getText().toString();
                                 final String password = ((TextView) dlg.findViewById(R.id.password)).getText().toString();
+                                mUsername = email;
+                                mEmail = data.getName();
 
                                 //firebase auth
                                 mFirebaseRef.authWithPassword(email, password, new Firebase.AuthResultHandler() {
@@ -234,8 +239,6 @@ public class MainActivity extends ListActivity {
             @Override
             public void onAuthStateChanged(AuthData authData) {
                 if (authData != null) {
-                    mUsername = data.getUserName();
-                    email = data.getName();
                     findViewById(R.id.login).setVisibility(View.INVISIBLE);
                     findViewById(R.id.logout).setVisibility(View.VISIBLE);
                     findViewById(R.id.createUser).setVisibility(View.INVISIBLE);
