@@ -81,8 +81,6 @@ public class MainActivity extends ListActivity {
             protected void populateView(View v, ChatMessage model) {
                 ((TextView)v.findViewById(android.R.id.text1)).setText(model.getUserName());
                 ((TextView)v.findViewById(android.R.id.text2)).setText(model.getText());
-                data.setUserName(model.getUserName());
-                data.setEmail(model.getName());
             }
         };
         setListAdapter(mListAdapter);
@@ -194,8 +192,6 @@ public class MainActivity extends ListActivity {
                                 final String password = ((TextView) dlg.findViewById(R.id.password)).getText().toString();
                                 mUsername = email;
                                 mEmail = data.getName();
-
-                                //firebase auth
                                 mFirebaseRef.authWithPassword(email, password, new Firebase.AuthResultHandler() {
                                     @Override
                                     public void onAuthenticated(AuthData authData) {
