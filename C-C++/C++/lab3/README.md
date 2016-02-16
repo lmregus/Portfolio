@@ -1,5 +1,5 @@
 # Developer
-    * **Luis Regus**
+   * **Luis Regus**
 
 # Description
-    * **Dynamic array example**
+   * **Dynamic array example**
