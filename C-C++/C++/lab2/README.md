@@ -1,5 +1,5 @@
 # Developer
-    * **Luis Regus**
+   * **Luis Regus**
 
 # Description
-    * **Simple invoice program written in C++**
+   * **Simple invoice program written in C++**
