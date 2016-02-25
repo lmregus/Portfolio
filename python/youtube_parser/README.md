@@ -24,17 +24,16 @@
         {'id': 'dolT4pz_oCg', 'time': {'h_m_s': ['s'], 'nums': ['1']}}
 
 # Example
+```python
+from url_parser import parse_url
+test = parse_url('https://youtu.be/dolT4pz_oCg?t=1h5m1s')
     
-    test = url_parser.parse_url('https://youtu.be/dolT4pz_oCg?t=1h5m1s')
-    
-    To get the id:
-        test['id']
-        returns 'dolT4pz_oCg'
-    To get the time:
-        test['time']['nums'][0]+test['time']['h_m_s'][0] 
-        retunrs 1h
-    
+test['id']
+returns 'dolT4pz_oCg'
+
+test['time']['nums'][0]+test['time']['h_m_s'][0] 
+retunrs 1h
+```
     The order in the time dictionary will match the order of the time in the URL, 
     for exmaple, if the URL has q time query like t=1h5m1s, the hour in the time 
     dictionary will be in the 0 index and so on.
-
