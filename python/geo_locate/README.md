@@ -7,7 +7,7 @@
 
 # Example
 ```python
-from geo_location import geo_locate
+from geo_locate import get_nearest
 
-closest_address = geo_locate(address_list)
+closest_address = get_nearest(address_list)
 ```
