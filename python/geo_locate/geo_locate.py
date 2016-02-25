@@ -9,7 +9,7 @@
 # Populate this variable with the desired locations 
 address_list = []
 
-def geo_locate(user_location):
+def get_nearest(user_location):
     ''' This function returns the nearest address to the
         user location. It compares the user location with an
         existing list of addresses.
