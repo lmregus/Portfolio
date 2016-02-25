@@ -27,12 +27,12 @@
 ```python
 from url_parser import parse_url
 test = parse_url('https://youtu.be/dolT4pz_oCg?t=1h5m1s')
-    
-test['id']
-returns 'dolT4pz_oCg'
 
+# returns 'dolT4pz_oCg'
+test['id']
+
+# returns 1h
 test['time']['nums'][0]+test['time']['h_m_s'][0] 
-retunrs 1h
 ```
     The order in the time dictionary will match the order of the time in the URL, 
     for exmaple, if the URL has q time query like t=1h5m1s, the hour in the time 
