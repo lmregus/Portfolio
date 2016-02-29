@@ -23,7 +23,6 @@ def get_nearest(user_location):
     geolocator = Nominatim()
     user_location = geolocator.geocode(user_location)
     user_latlon = (user_location.latitude, user_location.longitude)
-    distance_dict = ''
     distance_dict = {vincenty((geolocator.geocode(address).latitude, geolocator.geocode(address).longitude),\
             user_latlon).miles:address for address in address_list if address is not None}
     min_distance = min(distance_dict.items(), key=lambda k: k[0])
