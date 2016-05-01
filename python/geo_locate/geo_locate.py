@@ -6,12 +6,12 @@
 ############################
 
 
-# Populate this variable with the desired locations 
 from geopy.geocoders import GoogleV3
 from geopy.distance import vicenty
 
 
-address_list = []
+# Populate this tuple with the desired locations 
+address_list = ()
 
 def get_nearest(user_location):
     ''' This function returns the nearest address to the
