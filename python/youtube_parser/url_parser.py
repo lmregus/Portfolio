@@ -25,44 +25,27 @@ def get_time(query_t):
         num = ''
         counter = 0
         time_dict = {                 # This dictionary holds
-                    'nums': list(),   # the time
-                    'h_m_s': list(),  # in (hour, minutes, seconds)
-                }
+                     'time': list(),  # Time in (hour, minutes, seconds)
+        }
         h_pos = query_t.rfind('h')    # h:hour position
         m_pos = query_t.rfind('m')    # m:minutes position
         s_pos = query_t.rfind('s')    # s:seconds position
 
         if h_pos >= 0 and m_pos >= 0 and s_pos >= 0:
-            # appends number of hours
-            time_dict['nums'].append(query_t[:h_pos])
-            # appends h char
-            time_dict['h_m_s'].append(query_t[h_pos:h_pos+1:])
-            # appends number of minutes
-            time_dict['nums'].append(query_t[h_pos+1:m_pos])
-            # appends m char
-            time_dict['h_m_s'].append(query_t[m_pos:m_pos+1])
-            # appends number of seconds
-            time_dict['nums'].append(query_t[m_pos+1:s_pos])
-            # appends s char
-            time_dict['h_m_s'].append(query_t[s_pos:s_pos+1])
+            time_dict['time'].append(query_t[:h_pos + 1])
+            time_dict['time'].append(query_t[h_pos + 1:m_pos + 1])
+            time_dict['time'].append(query_t[m_pos + 1:s_pos + 1])
         elif m_pos >= 0 and s_pos >= 0:
-            time_dict['nums'].append(query_t[:m_pos])
-            time_dict['h_m_s'].append(query_t[m_pos:m_pos+1:])
-            time_dict['nums'].append(query_t[m_pos+1:s_pos])
-            time_dict['h_m_s'].append(query_t[s_pos:s_pos+1])
+            time_dict['time'].append(query_t[:m_pos + 1])
+            time_dict['time'].append(query_t[m_pos + 1:s_pos + 1])
         elif h_pos >= 0 and m_pos >= 0:
-            time_dict['nums'].append(query_t[:h_pos])
-            time_dict['h_m_s'].append(query_t[h_pos:h_pos+1:])
-            time_dict['nums'].append(query_t[h_pos+1:m_pos])
-            time_dict['h_m_s'].append(query_t[m_pos:m_pos+1])
+            time_dict['time'].append(query_t[:h_pos + 1])
+            time_dict['time'].append(query_t[h_pos + 1:m_pos + 1])
         elif h_pos >= 0 and s_pos >= 0:
-            time_dict['nums'].append(query_t[:h_pos])
-            time_dict['h_m_s'].append(query_t[h_pos:h_pos+1:])
-            time_dict['nums'].append(query_t[h_pos+1:s_pos])
-            time_dict['h_m_s'].append(query_t[s_pos:s_pos+1])
+            time_dict['time'].append(query_t[:h_pos + 1])
+            time_dict['time'].append(query_t[h_pos + 1:s_pos + 1])
         else:
-            time_dict['nums'].append(query_t[:h_pos])
-            time_dict['h_m_s'].append(query_t[h_pos:])
+            time_dict['time'].append(query_t[:2])
         return time_dict
 
 
