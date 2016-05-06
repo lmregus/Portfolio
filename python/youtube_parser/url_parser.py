@@ -12,8 +12,8 @@ def get_time(query_t):
         """ Returns a dictionary with the time, hours, minutes, seconds.
 
             This function gets a query that contains a string
-            like(1h30m, 1h, 1m20s or 1h2m23s) extactly. It breaks
-            it apart to put in a time dict for the get_url_time function.
+            like(1h30m, 1h, 1m20s or 1h2m23s) extactly. It makes sure
+	    that matches the regex and returns the time string
 
             Args:
                 query_t (string): Query string to be processed.
@@ -22,22 +22,18 @@ def get_time(query_t):
                 string: An empty string if no digits were found,
                 a number string with the found numbers otherwise.
         """
-        num = ''
-        counter = 0
-        time_dict = {                 # This dictionary holds
-                     'time': '',      # Time in (hour, minutes, seconds)
-        }
+        time_str = ''
 	regex_hms = re.compile('\d+[h]\d+[m]\d+[s]')
 	regex_ms = re.compile('\d+[m]\d+[s]')
 	regex_s = re.compile('\d+[s]')
 
 	if regex_hms.match(query_t):
-	    time_dict['time'] = query_t
+	    time_str = query_t
 	elif regex_ms.match(query_t):
-	    time_dict['time'] = query_t
+	    time_str = query_t
 	elif regex_s.match(query_t):
-	    time_dict['time'] = query_t
-        return time_dict
+	    time_str = query_t
+        return time_str
 
 
 def get_url_time(parsed_url):
