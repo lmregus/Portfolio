@@ -25,27 +25,18 @@ def get_time(query_t):
         num = ''
         counter = 0
         time_dict = {                 # This dictionary holds
-                     'time': list(),  # Time in (hour, minutes, seconds)
+                     'time': '',      # Time in (hour, minutes, seconds)
         }
-        h_pos = query_t.rfind('h')    # h:hour position
-        m_pos = query_t.rfind('m')    # m:minutes position
-        s_pos = query_t.rfind('s')    # s:seconds position
+	regex_hms = re.compile('\d+[h]\d+[m]\d+[s]')
+	regex_ms = re.compile('\d+[m]\d+[s]')
+	regex_s = re.compile('\d+[s]')
 
-        if h_pos >= 0 and m_pos >= 0 and s_pos >= 0:
-            time_dict['time'].append(query_t[:h_pos + 1])
-            time_dict['time'].append(query_t[h_pos + 1:m_pos + 1])
-            time_dict['time'].append(query_t[m_pos + 1:s_pos + 1])
-        elif m_pos >= 0 and s_pos >= 0:
-            time_dict['time'].append(query_t[:m_pos + 1])
-            time_dict['time'].append(query_t[m_pos + 1:s_pos + 1])
-        elif h_pos >= 0 and m_pos >= 0:
-            time_dict['time'].append(query_t[:h_pos + 1])
-            time_dict['time'].append(query_t[h_pos + 1:m_pos + 1])
-        elif h_pos >= 0 and s_pos >= 0:
-            time_dict['time'].append(query_t[:h_pos + 1])
-            time_dict['time'].append(query_t[h_pos + 1:s_pos + 1])
-        else:
-            time_dict['time'].append(query_t[:2])
+	if regex_hms.match(query_t):
+	    time_dict['time'] = query_t
+	elif regex_ms.match(query_t):
+	    time_dict['time'] = query_t
+	elif regex_s.match(query_t):
+	    time_dict['time'] = query_t
         return time_dict
 
 
@@ -66,7 +57,7 @@ def get_url_time(parsed_url):
         if parsed_url:
             query = urlparse.parse_qs(parsed_url.query)
             for key, val in query.items():  # looking for the t char
-                if key == 't':              # if t is found
+                if key == 't':              # if it is found
                     if parsed_url.query:
                         query_t = urlparse.parse_qs(parsed_url.query)['t'][0]
                         url_time = get_time(query_t)
