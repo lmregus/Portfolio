@@ -19,8 +19,9 @@ def get_time(query_t):
                 query_t (string): Query string to be processed.
 
             Returns:
-                string: An empty string if no digits were found,
-                a number string with the found numbers otherwise.
+                string: An empty string if no pattern match was found, 
+			a string that contains the time in {hms}, {ms}, 
+                        or {s}.
         """
         time_str = ''
 	regex_hms = re.compile('\d+[h]\d+[m]\d+[s]')
