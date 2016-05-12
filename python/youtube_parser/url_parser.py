@@ -25,8 +25,10 @@ def get_time(query_t):
         """
         time_str = ''
 	regex_hms = re.compile('\d+[h]\d+[m]\d+[s]')
+        regex_hm = re.compile('\d+[h]\d+[m]')
+	regex_hs = re.compile('\d+[h]\d+[s]')
 	regex_ms = re.compile('\d+[m]\d+[s]')
-	regex_s = re.compile('\d+[s]')
+	regex_s = re.compile('\d+[hsm]')
 
 	if regex_hms.search(query_t):
 	    start = regex_hms.search(query_t).start()
@@ -35,6 +37,14 @@ def get_time(query_t):
 	elif regex_ms.search(query_t):
 	    start = regex_ms.search(query_t).start()
 	    end = regex_ms.search(query_t).end()
+	    time_str = query_t[start:end]
+	elif regex_hs.search(query_t):
+	    start = regex_hs.search(query_t).start()
+	    end = regex_hs.search(query_t).end()
+	    time_str = query_t[start:end]
+	elif regex_hm.search(query_t):
+	    start = regex_hm.search(query_t).start()
+	    end = regex_hm.search(query_t).end()
 	    time_str = query_t[start:end]
 	elif regex_s.search(query_t):
 	    start = regex_s.search(query_t).start()
