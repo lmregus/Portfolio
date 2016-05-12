@@ -12,16 +12,16 @@
         returns {'id': 'dolT4pz_oCg', 'time': ''}
 
     3.  url_parser.parse_url('https://youtu.be/dolT4pz_oCg?t=1h23s')
-        returns {'id': 'dolT4pz_oCg', 'time': {'h_m_s': ['h', 's'], 'nums': ['1', '23']}} 
-    
+        {'id': 'dolT4pz_oCg', 'time': '1h23s'} 
+
     4.  url_parser.parse_url('https://youtu.be/dolT4pz_oCg?t=1h23m')
-        {'id': 'dolT4pz_oCg', 'time': {'h_m_s': ['h', 'm'], 'nums': ['1', '23']}}
+	{'id': 'dolT4pz_oCg', 'time': '1h23m'}
 
     5.  url_parser.parse_url('https://youtu.be/dolT4pz_oCg?t=1h23m12s')
-        {'id': 'dolT4pz_oCg', 'time': {'h_m_s': ['h', 'm', 's'], 'nums': ['1', '23', '12']}}
-
+	{'id': 'dolT4pz_oCg', 'time': '1h23m12s'}
+    
     6.  url_parser.parse_url('https://youtu.be/dolT4pz_oCg?t=1s')
-        {'id': 'dolT4pz_oCg', 'time': {'h_m_s': ['s'], 'nums': ['1']}}
+        {'id': 'dolT4pz_oCg', 'time': '1s'}
 
 # Example
 ```python
