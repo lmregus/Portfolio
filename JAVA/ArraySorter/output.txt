@@ -1,0 +1,67 @@
+Enter the size of the array (3 to 10):
+9
+Enter values for element 0:
+1000
+Enter values for element 1:
+-200
+Enter values for element 2:
+500
+Enter values for element 3:
+150
+Enter values for element 4:
+600
+Enter values for element 5:
+800
+Enter values for element 6:
+150
+Enter values for element 7:
+50
+Enter values for element 8:
+-25
+The unsorted values...
+1000
+-200
+500
+150
+600
+800
+150
+50
+-25
+The sorted values...
+-200
+-25
+50
+150
+150
+500
+600
+800
+1000
+Press control-c to quit.
+
+Enter the size of the array (3 to 10):
+5
+Enter values for element 0:
+27
+Enter values for element 1:
+13
+Enter values for element 2:
+49
+Enter values for element 3:
+29
+Enter values for element 4:
+2
+The unsorted values...
+27
+13
+49
+29
+2
+The sorted values...
+2
+13
+27
+29
+49
+Press control-c to quit.
