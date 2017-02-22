@@ -11,5 +11,5 @@
 ```python
 from geo_locate import get_nearest
 
-closest_address = get_nearest(address)
+closest_address = get_nearest(address, address_tuple)
 ```
