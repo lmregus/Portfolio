@@ -6,9 +6,9 @@ from behavior.quack_behavior import QuackBehavior
 
 class Duck(ABC):
 
-    def __init__(self):
-        self._fly_behavior
-        self._quack_behavior
+    def __init__(self, fly_behavior, quack_behavior):
+        self._fly_behavior = fly_behavior
+        self._quack_behavior = quack_behavior
 
     @abstractmethod
     def display(self):
@@ -29,9 +29,7 @@ class Duck(ABC):
     def set_quack_behavior(self, quack_behavior: QuackBehavior):
         self._quack_behavior = quack_behavior
 
-    """
     __slots__ = (
         '_fly_behavior',
         '_quack_behavior'
     )
-    """
