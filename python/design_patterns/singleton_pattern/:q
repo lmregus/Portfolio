@@ -1,0 +1,11 @@
+from threading import Thread
+
+
+class ThreadWithReturnvalue(Thread):
+    def __init__(self, group=None, target=None, name=None,
+                 args=(), kwargs={}, Verbose=None):
+        Thread.__init__(self, group, target, name, args, kwargs)
+        self._value = args[0]
+
+    def get_value(self) -> str:
+        return self._value
