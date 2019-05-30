@@ -21,8 +21,8 @@ class TestSingleton:
             Inner function used to confirm that the singleton is thread safe.
             If the print.value is the same for both processes, it passed.
             """
-            singleton = SingletonThreadSafe(value)
-            print(singleton.value)
+            singleton = SingletonThreadSafe()
+            return singleton
 
         process1 = Thread(target=test_singleton, args=("process1",))
         process2 = Thread(target=test_singleton, args=("process2",))
