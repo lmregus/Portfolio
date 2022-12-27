@@ -12,6 +12,6 @@ pytest==3.0.6
 pytest-cache==1.0
 pytest-flakes==1.0.1
 pytest-pep8==1.0.6
-setuptools==34.3.0
+setuptools==65.5.1
 six==1.10.0
 wheel==0.29.0
